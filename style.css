@@ -153,15 +153,6 @@ section .title::after{
     pointer-events: none;
     transition: all 0.3s ease;
 }
-.scroll-up-btn.show{
-    bottom: 30px;
-    opacity: 1;
-    pointer-events: auto;
-}
-.scroll-up-btn:hover{
-    filter: brightness(90%);
-}
-
 
 /* home section styling */
 .home{
@@ -181,16 +172,31 @@ section .title::after{
 .home .max-width .row{
   margin-right: 0;
 }
-.home .home-content .text-1{
+.home .home-content .text-1 {
     font-size: 27px;
     color: #111;
+    opacity: 0; /* Hide initially */
+    transform: translateY(-50px); /* Move it up */
+    animation: slideDownText 1s ease forwards 0.5s;
 }
-.home .home-content .text-2{
+
+.home .home-content .text-2 {
     font-size: 75px;
     font-weight: 600;
-    margin-left: -3px;
     color: #111;
+    text-align: center;
+    opacity: 0; /* Hide initially */
+    transform: translateY(-50px); /* Move it up */
+    animation: slideDownText 1s ease forwards 0.5s;
 }
+
+@keyframes slideDownText {
+    to {
+        opacity: 1; /* Make it visible */
+        transform: translateY(0); /* Animate to its original position */
+    }
+}
+
 .home .home-content .text-3{
     font-size: 40px;
     margin: 5px 0;
@@ -270,13 +276,16 @@ section .title::after{
 .services .title::after,
 
 .services .serv-content .card{
-    width: calc(33% - 20px);
+    width: 350px;
+    height: 400px;
+    display: block;
     background: #222;
     text-align: center;
     border-radius: 6px;
     padding: 50px 25px;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-right: 30px;
 }
 .services .serv-content .card:hover{
     background: crimson;
@@ -311,6 +320,7 @@ section .title::after{
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 10px;
+    text-align: center;
 }
 .skills .skills-content .left p{
     text-align: center;
